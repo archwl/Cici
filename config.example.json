@@ -1,0 +1,35 @@
+{
+    "__DOCUMENTATION__": [
+        "This is the configuration file for Cici.",
+        "Available options:",
+        "auto_reload_config - [true/false] Force cici to automatically reload this config every 10 seconds",
+        "silent - [true/false] don't show errors and don't output to stdout.",
+        "custom_prefixes - [true/false] enable custom per-user and per-server prefixes",
+        "dont_auto_load - [true/false] do not automatically load extensions from ./Modules",
+        "hush_jishaku - [true/false] hide and silence the jishaku development and debugging cog",
+        "log_to_file - [true/false] save stdout/stderr output to a text file. By default saves to ./debug.log",
+        "log_level - [String, ERROR/DEBUG] set the logging.logger level. The DEBUG setting can cause performance issues",
+        "bot_token - (*REQUIRED*)[String] Discord bot token. Can be found at https://discord.com/developers/applications",
+        "extra_modules - [Array] List of extra modules/extensions to add on boot",
+        "prefix_list - [Array] List of default prefixes",
+        "max_prefix_length - [Integer] Maximum character limit for custom prefixes. Does not apply to default prefixes",
+        "embed_color - [Integer] Default embed color. Hexadecimal values must be converted to a base-10 integer first",
+        "Modify values below this line."
+    ],
+    "auto_reload_config": true,
+    "silent": false,
+    "dont_auto_load": false,
+    "custom_prefixes": true,
+    "hush_jishaku": true,
+    "log_to_file": true,
+    "log_level": "ERROR",
+    "bot_token": "Your bot token",
+    "extra_modules": [
+        "jishaku"
+    ],
+    "prefix_list": [
+        "cc!"
+    ],
+    "max_prefix_length": 15,
+    "embed_color": 3092790
+}

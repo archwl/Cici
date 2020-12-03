@@ -1,0 +1,19 @@
+# NewCici/Core.py: 10
+aiohttp == 3.7.3
+
+# NewCici/Core.py: 8
+# NewCici/Essentials.py: 7
+# NewCici/Modules/prefix.py: 2
+aiosqlite == 0.16.0
+
+# NewCici/Core.py: 5,11
+# NewCici/Essentials.py: 5,8
+# NewCici/Modules/background-services.py: 6
+# NewCici/Modules/error-handling.py: 7,8
+# NewCici/Modules/fun.py: 5,6,7
+# NewCici/Modules/info.py: 6,7,8
+# NewCici/Modules/prefix.py: 1
+discord == 1.0.1
+sr-api == 1.1.3
+# NewCici/Essentials.py: 9
+jishaku == 1.20.0.220
