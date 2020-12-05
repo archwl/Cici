@@ -47,7 +47,7 @@ class Fun(commands.Cog):
         dong.append('D')
         dong_embed = discord.Embed(
             title=dong_title,
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description=f'**{"".join(dong)}**'
             )
 
@@ -63,7 +63,7 @@ class Fun(commands.Cog):
     @commands.max_concurrency(1, per=BucketType.channel, wait=False)
     async def chat(self, ctx):
         '''Chat with me!'''
-        await ctx.send(embed=discord.Embed(title='You\'re now chatting with me! Say "bye" to stop.', color=0x2F3136))
+        await ctx.send(embed=discord.Embed(title='You\'re now chatting with me! Say "bye" to stop.', color=self.bot.embed_color))
         while True:
             msg = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author)
             if msg.content.lower() == 'bye' or msg.content.lower() == 'stop':
@@ -78,32 +78,32 @@ class Fun(commands.Cog):
         '''Eat the cookie as fast as possible!'''
         first_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='Be the first to eat the cookie!'
             )
         second_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='3'
             )
         third_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='2'
             )
         fourth_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='1'
             )
         fifth_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='EAT!'
             )
         timeout_embed = discord.Embed(
             title=':cookie:',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             description='No one ate the cookie on time! I get to keep it.'
             )
 
@@ -130,7 +130,7 @@ class Fun(commands.Cog):
         else:
             final_embed = discord.Embed(
                 title=':cookie:',
-                color=0x2F3136,
+                color=self.bot.embed_color,
                 description=f'{winner_user.mention} ate the cookie first!\n`{(datetime.utcnow() - start_time).total_seconds()}s`'
             )
             await message.edit(embed=final_embed)
@@ -187,7 +187,7 @@ class Fun(commands.Cog):
         bytes_image = BytesIO(await image.read())
         wasted_embed = discord.Embed(
             title='WASTED.',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             )
         wasted_file = discord.File(bytes_image, filename='image.png')
 
@@ -204,7 +204,7 @@ class Fun(commands.Cog):
         bytes_image = BytesIO(await image.read())
         gay_embed = discord.Embed(
             title='lol gay',
-            color=0x2F3136,
+            color=self.bot.embed_color,
             )
         gay_file = discord.File(bytes_image, filename='image.png')
 
@@ -221,7 +221,7 @@ class Fun(commands.Cog):
         bytes_image = BytesIO(await image.read())
         pixelate_embed = discord.Embed(
             title='moar jpeg',
-            color=0x2F3136,
+            color=self.bot.embed_color
             )
         pixelate_file = discord.File(bytes_image, filename='image.png')
 
@@ -234,7 +234,7 @@ class Fun(commands.Cog):
         image = self.sr_client.youtube_comment(str(ctx.author.avatar_url_as(format='png')), str(ctx.author.name), comment)
         bytes_image = BytesIO(await image.read())
         youtube_embed = discord.Embed(
-            color=0x2F3136,
+            color=self.bot.embed_color
             )
         youtube_file = discord.File(bytes_image, filename='image.png')
 
@@ -247,12 +247,15 @@ class Fun(commands.Cog):
         if self.last_deleted_message:
             try:
                 message = self.last_deleted_message[ctx.guild.id]
+                description = message.embeds[0].description if message.embeds else message.content
+                title = message.embeds[0].title if message.embeds else ''
                 snipe_embed = discord.Embed(
-                    color=0x2F3136,
-                    description=message.content
+                    color=self.bot.embed_color,
+                    title=title,
+                    description=description
                 )
                 snipe_embed.set_author(name=str(message.author), icon_url=message.author.avatar_url)
-                snipe_embed.set_footer(text=f'Requested by {str(ctx.author)}', icon_url=ctx.author.avatar_url)
+                snipe_embed.set_footer(text=f'Boom headshot.')
                 await ctx.send(embed=snipe_embed)
             except Exception as e:
                 await ctx.send(f'Couldn\'t display the sniped message, sorry\n```py\n{e}```')

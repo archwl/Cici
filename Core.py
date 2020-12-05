@@ -88,13 +88,15 @@ bot = Cici(
 
 @bot.event
 async def on_ready():
-    if not dict_bool_eval(config, 'silent'):
+    if dict_bool_eval(config, 'silent'):
         print('Connected to Discord!')
     return True
+
 
 def start_cici():
     bot.load_extension('Essentials')
     bot.run()
 
+
 if __name__ == '__main__':
-   start_cici() 
+    start_cici()
