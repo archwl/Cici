@@ -23,6 +23,10 @@ class Fun(commands.Cog):
     @commands.Cog.listener('on_message_delete')
     async def on_message_delete(self, message: discord.Message):
         self.last_deleted_message[message.guild.id] = message
+    
+    @commands.Cog.listener('on_message_edit')
+    async def on_message_edit(self, message: discord.Message, new_message: discord.Message):
+        self.last_deleted_message[message.guild.id] = message
 
     @commands.command()
     async def dong(self, ctx):
